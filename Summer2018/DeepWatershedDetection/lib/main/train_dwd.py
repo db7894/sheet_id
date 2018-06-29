@@ -20,7 +20,7 @@ from layer import RoIDataLayer
 from prefetch_wrapper import PrefetchWrapper
 
 
-from datasets.fcn_groundtruth import stamp_class, stamp_directions, stamp_energy, stamp_bbox,\
+from fcn_groundtruth import stamp_class, stamp_directions, stamp_energy, stamp_bbox,\
     try_all_assign,get_gt_visuals,get_map_visuals
 
 nr_classes = None
