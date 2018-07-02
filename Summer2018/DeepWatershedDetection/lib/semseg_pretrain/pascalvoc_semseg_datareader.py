@@ -165,4 +165,4 @@ class voc_seg_dataset_reader:
 
 
 if __name__ == "__main__":
-    data_reader = voc_seg_dataset_reader("/Users/tugg/datasets/DeepScores")
+    data_reader = voc_seg_dataset_reader("/data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/data/DeepScores_2017/segmentation_detection")
