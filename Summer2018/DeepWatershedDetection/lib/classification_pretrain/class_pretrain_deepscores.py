@@ -1,12 +1,17 @@
 #
 # Pretrain resnet 50 / 101 / 152 with deepscores-classification
 #
+import sys
+sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/main/')
+sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/datasets/')
+
 import argparse
-from main.config import cfg, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
+from config import cfg
+#, cfg_from_file, cfg_from_list, get_output_dir, get_output_tb_dir
 import pprint
 import numpy as np
 import deepscores_classification_datareader
-from datasets.imdb import imdb
+from imdb import imdb
 import tensorflow as tf
 
 import os
