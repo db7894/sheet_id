@@ -5,10 +5,12 @@ import tensorflow as tf
 import numpy as np
 import argparse
 import sys
+sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/utils/')
+sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/models/')
 import pascalvoc_semseg_datareader
 import deepscores_semseg_datareader
-from main.config import cfg
-from models.RefineNet import build_refinenet
+from config import cfg
+from RefineNet import build_refinenet
 
 
 
