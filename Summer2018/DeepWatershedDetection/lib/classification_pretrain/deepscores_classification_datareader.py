@@ -130,14 +130,16 @@ class class_dataset_reader:
         nr_y = image.shape[0]/self.tile_size[0]
         nr_x = image.shape[1]/self.tile_size[1]
 
-        for x_i in xrange(0, nr_x):
-            for y_i in xrange(0, nr_y):
+        for x_i in range(0, int(nr_x)):
+            for y_i in range(0, int(nr_y)):
                 sub_img = image[y_i*self.tile_size[0]:(y_i+1)*self.tile_size[0], x_i*self.tile_size[1]:(x_i+1)*self.tile_size[1]]
                 if self.pad_to is not None:
 
                     canvas = np.ones(self.pad_to, dtype=np.uint8)*255
                     offset_0 = (canvas.shape[0] - sub_img.shape[0])/2
                     offset_1 = (canvas.shape[1] - sub_img.shape[1])/2
+                    print("offset_0: " + str(offset_0:(sub_img.shape[0]+offset_0)))
+                    print("offset_1: " + str(offset_1:(sub_img.shape[1]+offset_1)))
 
                     canvas[offset_0:(sub_img.shape[0]+offset_0),offset_1:(sub_img.shape[1]+offset_1)]=sub_img
                     sub_img = canvas
