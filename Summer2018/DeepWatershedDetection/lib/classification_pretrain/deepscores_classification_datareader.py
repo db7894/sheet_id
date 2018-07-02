@@ -138,10 +138,10 @@ class class_dataset_reader:
                     canvas = np.ones(self.pad_to, dtype=np.uint8)*255
                     offset_0 = (canvas.shape[0] - sub_img.shape[0])/2
                     offset_1 = (canvas.shape[1] - sub_img.shape[1])/2
-                    print("offset_0: " + str(offset_0))
-                    print("end index for 0: " + str(sub_img.shape[0]+offset_0))
-                    print("offset_1: " + str(offset_1))
-                    print("end index for 0: " + str(sub_img.shape[0]+offset_0))
+                    #print("offset_0: " + str(offset_0))
+                    #print("end index for 0: " + str(sub_img.shape[0]+offset_0))
+                    #print("offset_1: " + str(offset_1))
+                    #print("end index for 0: " + str(sub_img.shape[0]+offset_0))
 
                     canvas[int(offset_0):int(sub_img.shape[0]+offset_0),int(offset_1):int(sub_img.shape[1]+offset_1)]=sub_img
                     sub_img = canvas

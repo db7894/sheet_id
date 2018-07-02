@@ -49,7 +49,7 @@ def parse_args():
                       default=True, type=bool)
   parser.add_argument('--batch_size', dest='batch_size',
                       help="batchsize",
-                      default=200, type=int)
+                      default=20, type=int)
   parser.add_argument('--save_iters', dest='save_iters',
                       help="after how many iterations do we save the model",
                       default=1000, type=int)
