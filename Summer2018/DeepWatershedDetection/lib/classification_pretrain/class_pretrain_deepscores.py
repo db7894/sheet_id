@@ -187,4 +187,4 @@ if __name__ == '__main__':
             print(loss_act)
 
         if iter % args.save_iters == 0:
-            save_path = saver.save(sess, os.path.join(os.getcwd(), 'pretrain_deepscores', 'DeepScores', "resnet_v1" + args.net.split("res")[1] + ".ckpt")
+            save_path = saver.save(sess, os.path.join(os.getcwd(), 'pretrain_deepscores', 'DeepScores', "resnet_v1" + args.net.split("res")[1] + ".ckpt"))
