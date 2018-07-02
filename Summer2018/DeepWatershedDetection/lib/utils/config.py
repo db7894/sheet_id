@@ -32,7 +32,7 @@ cfg = __C
 __C.TRAIN = edict()
 
 # pretrained directory (added by Daniel)
-__C.PRETRAINED_DIR = 'data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/pretrain_deepscores/'
+__C.PRETRAINED_DIR = 'data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/pretrain_deepscores'
 
 # Scales to use during training (can list multiple scales)
 # Each scale is the pixel size of an image's shortest side
