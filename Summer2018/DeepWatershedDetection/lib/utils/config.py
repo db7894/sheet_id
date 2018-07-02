@@ -219,6 +219,20 @@ def get_output_dir(imdb, net=None):
         os.makedirs(outdir)
     return outdir
 
+def get_output_tb_dir(imdb, weights_filename):
+  """Return the directory where tensorflow summaries are placed.
+  If the directory does not exist, it is created.
+  A canonical path is built using the name from an imdb and a network
+  (if not None).
+  """
+  outdir = osp.abspath(osp.join(__C.ROOT_DIR, 'tensorboard', __C.EXP_DIR, imdb.name))
+  if weights_filename is None:
+    weights_filename = 'default'
+  outdir = osp.join(outdir, weights_filename)
+  if not os.path.exists(outdir):
+    os.makedirs(outdir)
+  return outdir
+
 def _merge_a_into_b(a, b):
     """Merge config dictionary a into config dictionary b, clobbering the
     options in b whenever they are also specified in a.
