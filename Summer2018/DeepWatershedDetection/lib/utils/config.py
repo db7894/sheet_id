@@ -29,6 +29,9 @@ cfg = __C
 # Training options
 #
 
+# pretrained directory (added by Daniel)
+__C.PRETRAINED_DIRECTORY = 'data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/pretrain_deepscores/'
+
 __C.TRAIN = edict()
 
 # Scales to use during training (can list multiple scales)
