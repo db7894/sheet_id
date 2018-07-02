@@ -164,7 +164,7 @@ if __name__ == '__main__':
     sess.run(tf.global_variables_initializer())
 
     # potentioally load weights
-    #model_checkpoint_name = cfg.PRETRAINED_DIR +"/DeepScores/resnet_v1" + args.net.split("res")[1] + ".ckpt"
+    model_checkpoint_name = cfg.PRETRAINED_DIR +"/DeepScores/resnet_v1" + args.net.split("res")[1] + ".ckpt"
     #if args.weight:
         #if args.continue_training or not args.is_training:
             #print('Loaded latest model checkpoint')
@@ -187,4 +187,4 @@ if __name__ == '__main__':
             print(loss_act)
 
         if iter % args.save_iters == 0:
-            save_path = saver.save(sess, model_checkpoint_name)
+            save_path = saver.save(sess, os.path.join(os.getcwd(), 'pretrain_deepscores', 'DeepScores', "resnet_v1" + args.net.split("res")[1] + ".ckpt")
