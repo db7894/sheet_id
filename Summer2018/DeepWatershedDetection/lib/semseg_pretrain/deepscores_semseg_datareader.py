@@ -201,4 +201,4 @@ class ds_semseg_datareader:
         return images, annotations
 
 if __name__ == "__main__":
-    data_reader = ds_semseg_datareader("/Users/tugg/datasets/DeepScores")
+    data_reader = ds_semseg_datareader("/data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/data/DeepScores_2017/segmentation_detection")
