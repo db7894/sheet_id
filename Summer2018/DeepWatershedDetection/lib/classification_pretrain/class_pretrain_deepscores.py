@@ -128,7 +128,9 @@ if __name__ == '__main__':
         with slim.arg_scope(resnet_v1.resnet_arg_scope(weight_decay=0.0005)):
             out, end_points = resnet_v1.resnet_v1_50(input, is_training=args.train, scope='resnet_v1_50', num_classes=num_classes)
             # RefineNet requires pre-trained ResNet weights
-            init_fn = slim.assign_from_checkpoint_fn(os.path.join(pretrained_dir, 'resnet_v1_50.ckpt'), slim.get_model_variables('resnet_v1_50'))
+            saver = tf.train.import_meta_graph('/data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/resnet_v150.ckpt.meta')
+            saver.restore(sess, '/data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/resnet_v150.ckpt')
+            init_fn = slim.assign_from_checkpoint_fn(os.path.join('/data1/dbashir/ttemp/Project/Summer2018/DeepWatershedDetection/lib/classification_pretrain/', 'resnet_v150.ckpt'), slim.get_model_variables('resnet_v1_50'))
     elif args.net == 'res101':
         with slim.arg_scope(resnet_v1.resnet_arg_scope(weight_decay=0.0005)):
             out, end_points = resnet_v1.resnet_v1_101(input, is_training=args.train, scope='resnet_v1_101', num_classes=num_classes)

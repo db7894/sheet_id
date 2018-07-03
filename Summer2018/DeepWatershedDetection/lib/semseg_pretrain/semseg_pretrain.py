@@ -5,6 +5,7 @@ import tensorflow as tf
 import numpy as np
 import argparse
 import sys
+import os
 sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/utils/')
 sys.path.insert(0,'/data1/dbashir/Project/Summer2018/DeepWatershedDetection/lib/models/')
 import pascalvoc_semseg_datareader
@@ -20,15 +21,18 @@ def main(unused_argv):
     print("Setting up image reader...")
     if args.dataset == "DeepScores":
         data_reader = deepscores_semseg_datareader.ds_semseg_datareader(cfg.DATA_DIR+"/DeepScores_2017/segmentation_detection", crop=args.crop, crop_size=args.crop_size)
-        resnet_dir = cfg.PRETRAINED_DIR+"/DeepScores/"
-        refinenet_dir = cfg.PRETRAINED_DIR+"/DeepScores_semseg/"
+        #resnet_dir = cfg.PRETRAINED_DIR+"/DeepScores/"
+        resnet_dir = '../classification_pretrain/pretrain_deepscores/DeepScores/'
+        #refinenet_dir = cfg.PRETRAINED_DIR+"/DeepScores_semseg/"
+        refinenet_dir = os.getcwd()
         num_classes = 124
         input = tf.placeholder(tf.float32, shape=[None, args.crop_size[0], args.crop_size[1], 1])
         substract_mean = False
     elif args.dataset == "VOC2012":
         data_reader = pascalvoc_semseg_datareader.voc_seg_dataset_reader(cfg.DATA_DIR+"/VOC2012")
         resnet_dir = cfg.PRETRAINED_DIR+"/ImageNet/"
-        refinenet_dir = cfg.PRETRAINED_DIR+"/VOC2012/"
+        #refinenet_dir = cfg.PRETRAINED_DIR+"/VOC2012/"
+        refinenet_dir = os.getcwd()
         num_classes = 21
         input = tf.placeholder(tf.float32, shape=[None, None, None, 3])
         substract_mean = True
@@ -130,9 +134,9 @@ if __name__ == '__main__':
   parser.add_argument("--crop", type=bool, default=True, help="should images be cropped")
   parser.add_argument("--continue_training", type=bool, default=False, help="load checkpoint")
   parser.add_argument("--crop_size", type=bytearray, default=[640,640], help="batch size for training")
-  parser.add_argument("--iterations", type=int, default=50000, help="path to logs directory")
+  parser.add_argument("--iterations", type=int, default=20000, help="path to logs directory")
   parser.add_argument("--learning_rate", type=float, default=1e-4, help="Learning rate for Adam Optimizer")
   parser.add_argument("--dataset", type=str, default="DeepScores", help="DeepScores or VOC2012")
-  parser.add_argument('--model', type=str, default="RefineNet-Res101", help='The model you are using. Currently supports: RefineNet-Res50, RefineNet-Res101, RefineNet-Res152')
+  parser.add_argument('--model', type=str, default="RefineNet-Res50", help='The model you are using. Currently supports: RefineNet-Res50, RefineNet-Res101, RefineNet-Res152')
   args, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
